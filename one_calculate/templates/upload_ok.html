@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>BetaTest</title>
+
+<!-- bs4 css -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"/>
+
+<!-- jQuery library -->
+<script src="{{ url_for('static',filename='js/jquery-3.3.1.min.js') }}"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+<!-- canvas script -->
+<script src="{{ url_for('static',filename='js/fabric.js') }}"></script>
+	
+<!-- main script -->
+<script src = "{{ url_for('static',filename='js/main.js') }}" > </script>
+	
+<!-- main css -->
+<link rel = "stylesheet" href="{{ url_for('static',filename='css/main.css') }}" > 
+
+<!-- math script -->
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML-full"></script>
+	
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#"><h1>handwritten numbers recognition<small> --beta 1.1</small></h1></a>
+  </nav>
+<div class="container-fluid"> 
+
+<blockquote class="blockquote text-justify" style="margin:30px;">
+ <p> This is a simple tool that uses keras_cnn_model to recognize handwritten numbers. 
+ The model was trained to recognize 10 numbers .Now it is in alpha test . Learning from <a href='https://medium.com/tensorflow/train-on-google-colab-and-run-on-the-browser-a-case-study-8a45f9b1474e'>Sketcher</a><br>
+ </p>
+ <h4>Don't coincide numbers in vertical direction<br>
+ </h4>
+    <footer class="blockquote-footer">xiaoli</footer>
+    <footer class="blockquote-footer">If you're a bird, I'm a bird</footer>
+    <footer class="blockquote-footer">You had me at hello</footer>
+  </blockquote>
+</div>
+
+<div class="row">
+  <div class="col" style ='margin-left:100px;'> 
+    <h1>upload image</h1>  
+    <form action="" enctype='multipart/form-data' method='POST'>
+        <input type="file" name="file" style="margin-top:20px;"/>
+        <input type="submit" value="upload" class="button-new" style="margin-top:15px;"/>
+    </form>
+    <canvas id="canvas" width="1300" height="380" class="canvas" style="border:1px solid #b9bfc9;margin-top:25px;"></canvas>
+      <div class="btn-group" style = 'margin-top:40px; '>
+        <input type="range" min="10" max="20" value="18" class="slider" id="myRange" style ='margin-top:20px;'>
+        <button type="button" class="btn btn-outline-primary" onclick ='erase()' style ='margin-left:10px;' disabled>Clear</button>
+        <button type="convertButton" class="btn btn-outline-primary" onclick ='convertImg()' style ='margin-left:10px;' disabled>Convert</button>
+      </div>   
+    <h4 id ='statusTemp' >`{{res|tojson}}`</h4>	  
+  </div>
+
+</div>
+<img src="{{ url_for('static', filename= './images/output.png',_t=val1) }}" width="840" height="280" alt="no"/ style ='margin-left:100px;'>
+</body>
+<script>
+	console.log('starting');
+	start('en')
+</script>
+</html>

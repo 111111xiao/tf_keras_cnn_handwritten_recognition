@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>BetaTest</title>
+
+<!-- jQuery library -->
+<script src="{{ url_for('static',filename='js/jquery-3.3.1.min.js') }}"></script>
+
+<!-- canvas script -->
+<script src="{{ url_for('static',filename='js/fabric.js') }}"></script>
+	
+<!-- main script -->
+<script src = "{{ url_for('static',filename='js/draw.js') }}" > </script>
+	
+<!-- main css -->
+<link rel = "stylesheet" href="{{ url_for('static',filename='css/main.css') }}" > 
+
+<link rel = "stylesheet" href="{{ url_for('static',filename='css/style.css') }}" > 
+
+	
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <!-- Brand/logo -->
+  <h1 class = "text">handwritten numbers recognition<small class = "text"> --beta 1.1</small></h1>
+  </nav>
+<div class="container-fluid"> 
+
+<blockquote class="blockquote text-justify" style="margin:30px;">
+ <h1 class = "text"> Welcome {{name}}!<br>
+ </h1>
+  </blockquote>
+</div>  
+<div class = "rank">
+  <h1 id = 'rankList'>    Rank List    </h1>
+  <h2 id = 'first'></h2>
+  <h3 id = 'second'></h3>
+  <h4 id = 'third'></h4>
+  <h4 id = 'fourth'></h4>
+</div>
+<div class="row">
+  <div class="col" style ='margin-left:100px;'>
+    <h4 id ='status' class = "text">Loading Model... </h4>	  
+    <canvas id="canvas" width="280" height="280" class="canvas" style="border:1px solid #b9bfc9;margin-top:25px;"></canvas>
+      <div class="btn-group" style = 'margin-top:40px; '>
+        <input type="range" min="20" max="30" value="25" class="slider" id="myRange" style ='margin-top:20px;'>
+        <button type="button" class="btn btn-outline-primary" onclick ='erase()' style ='margin-left:10px;' disabled>Clear</button>
+        <button type="convertButton" class="btn btn-outline-primary" onclick ='convertImg()' style ='margin-left:10px;' disabled>SAVE</button>
+      </div>   
+    <h4 id ='statusTemp' class = "text">Statues</h4>	  
+  </div>
+  <div class="col">
+    <section style="margin-top:120px">
+    </section>
+  </div>
+</div>
+
+
+</body>
+<script>
+	console.log('starting');
+  var name = {{name|tojson}}
+  var rankList = {{rank_list|tojson}}
+	start(name, rankList)
+</script>
+</html>
